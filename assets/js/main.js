@@ -48,16 +48,11 @@ let endScoreText = null;
 let isOver = false;
 let groundSpeed = 0;
 let bgSpeed = 0;
-// const cloud01Speed = 0;
-// const character = 0;
-
 let score = 0;
 const platformsSpeed = -200;
 const obstaclesW = 320;
 let obstaclesX = config.width;
 var rd;
-// const topY;
-// const bottomY;
 const game = new Phaser.Game(config);
 
 // loding函数
@@ -101,7 +96,7 @@ function loadPreload() {
 	// Add image resource
 	this.load.image('title', './assets/images/title01.png');
 	this.load.image('gameover', './assets/images/gameover.png');
-	this.load.image('start-button', './assets/images/button_default.png');
+	this.load.image('start-button', './assets/images/button_hover.png');
 	this.load.image('restart-button', './assets/images/restartButton.png');
 	this.load.image('background', './assets/images/blurMountain.png');
 	this.load.image('cloud01', './assets/images/cloud01.png');
@@ -132,8 +127,8 @@ function loadPreload() {
 	});
 
 	this.load.spritesheet('runcharacter', './assets/images/runCharacter.png', {
-		frameWidth: 66,
-		frameHeight: 43,
+		frameWidth: 47,
+		frameHeight: 30,
 	});
 
 	loadFn.call(this);
@@ -369,36 +364,11 @@ function overCreate() {
 		isOver = false;
 		title.destroy();
 		restartButton.destroy();
-		//1.有重力bug
-		// platforms.clear(true)
-		// player.destroy()
-		// ground.destroy()
-		// scoreText.destroy()
-		// game.scene.start('gameStartScene');
-		// 2.临时补救方法
 		restart();
 	});
 }
 
 function restart() {
-	// rd = Phaser.Math.Between(100, 135);
-	// obstaclesX += rd;
-	// platforms.children.entries[0].body.reset(
-	// 	obstaclesX,
-	// 	Phaser.Math.Between(-80, 30)
-	// );
-	// platforms.children.entries[1].body.reset(
-	// 	obstaclesX,
-	// 	Phaser.Math.Between(390, 390)
-	// );
-	// platforms.children.entries[2].body.reset(
-	// 	obstaclesX + rd,
-	// 	Phaser.Math.Between(-80, 30)
-	// );
-	// platforms.children.entries[3].body.reset(
-	// 	obstaclesX + rd,
-	// 	Phaser.Math.Between(390, 390)
-	// );
 	long1.destroy()
 	long2.destroy()
 	long3.destroy()
@@ -496,7 +466,7 @@ function update() {
 	// 背景地面无限滚动
 	if (!isOver) {
 		bgSpeed += 0.01;
-		groundSpeed += 5;
+		groundSpeed += 3.6;
 		bg.tilePositionX = bgSpeed;
 		ground.tilePositionX = groundSpeed;
 		// updateObstacles(this);
