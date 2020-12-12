@@ -1,4 +1,9 @@
-canvas{display: block; margin: 200px auto;}
-body{
-    background-color: black;
+html, body {
+    height: 100%;
+}
+
+body {
+  background-color: black;
+  display: grid;
+  place-items: center;
 }
